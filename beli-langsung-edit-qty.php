@@ -48,6 +48,7 @@
   // ================================================================================= //
   // Mencari Harga
   $dataHarga = mysqli_query($conn, "select barang_harga,
+                                           barang_harga_beli,
                                            barang_harga_grosir_1,
                                            barang_harga_grosir_2,
                                            barang_harga_s2,
@@ -81,6 +82,12 @@
   <input type="hidden" name="keranjang_barang_option_sn" value="<?= $keranjang_barang_option_sn; ?>">
 
     <?php if ( $tb_bos < 1 ) : ?>
+        
+    <div class="form-group">
+        <label for="keranjang_harga_beli">Harga Beli</label>
+        <input type="number" disabled name="keranjang_harga_beli" class="form-control" value="<?= $dataHarga['barang_harga_beli'] ?>"> 
+    </div>
+
     <div class="form-group">
         <label for="keranjang_satuan_end_isi">Satuan</label>
         <div class="">
@@ -136,7 +143,7 @@
 
         <?php if ( $keranjang['keranjang_harga_edit'] < 1 ) : ?>
         <div class="form-group">
-            <label for="keranjang_harga">Edit Harga</label>
+            <label for="keranjang_harga">Edit Harga Jual</label>
             <input type="number" min="1" name="keranjang_harga" class="form-control keranjang_harga-non-sn" value="<?= $keranjang['keranjang_harga']; ?>" readonly=""> 
             <div class="checkbox">
                 <label>
@@ -147,7 +154,7 @@
         </div>
        <?php else : ?>
         <div class="form-group">
-            <label for="keranjang_harga">Edit Harga</label>
+            <label for="keranjang_harga">Edit Harga Jual</label>
             <input type="number" min="1" name="keranjang_harga" class="form-control keranjang_harga-non-sn" value="<?= $keranjang['keranjang_harga']; ?>" required> 
             <input type="hidden" name="checkbox-harga" value="<?= $keranjang['keranjang_harga_edit']; ?>">
         </div>
@@ -155,7 +162,7 @@
     <?php else : ?>
       <?php if ( $keranjang['keranjang_harga_edit'] < 1 ) : ?>
       <div class="form-group">
-          <label for="keranjang_harga">Edit Harga</label>
+          <label for="keranjang_harga">Edit Harga Jual</label>
           <input type="number" min="1" name="keranjang_harga" class="form-control keranjang_harga-non-sn" value="<?= $keranjang['keranjang_harga']; ?>" readonly=""> 
           <div class="checkbox">
               <label>
@@ -166,7 +173,7 @@
       </div>
      <?php else : ?>
       <div class="form-group">
-          <label for="keranjang_harga">Edit Harga</label>
+          <label for="keranjang_harga">Edit Harga Jual</label>
           <input type="number" min="1" name="keranjang_harga" class="form-control keranjang_harga-non-sn" value="<?= $keranjang['keranjang_harga']; ?>" required> 
           <input type="hidden" name="checkbox-harga" value="<?= $keranjang['keranjang_harga_edit']; ?>">
       </div>
